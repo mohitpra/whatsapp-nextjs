@@ -30,15 +30,17 @@ function ChatScreen({ chat, messages }) {
   );
 
   const [recepientSnapshot] = useCollection(
-      db.collection('users').where("email", "==", getRecepientEmail(chat.users, user))
-)
+    db
+      .collection("users")
+      .where("email", "==", getRecepientEmail(chat.users, user))
+  );
 
-    const scrollToBottom = () => {
-        endOfMessageRef.current.scrollIntoView({
-            behaviour: "smooth",
-            block: "start",
-        });
-    }
+  const scrollToBottom = () => {
+    endOfMessageRef.current.scrollIntoView({
+      behaviour: "smooth",
+      block: "start",
+    });
+  };
 
   const showMessages = () => {
     if (messagesSnapshot) {
@@ -85,19 +87,23 @@ function ChatScreen({ chat, messages }) {
   return (
     <Container>
       <Header>
-          {recepient ? (
-              <Avatar src={recepient?.photoURL} />
-          ) : 
-          (<Avatar>{recepientEmail[0]}</Avatar>)
-          }
+        {recepient ? (
+          <Avatar src={recepient?.photoURL} />
+        ) : (
+          <Avatar>{recepientEmail[0]}</Avatar>
+        )}
 
         <HeaderInformation>
           <h3>{recepientEmail}</h3>
           {recepientSnapshot ? (
-              <p>Last active: {" "}
+            <p>
+              Last active:{" "}
               {recepient?.lastSeen?.toDate() ? (
-                  <TimeAgo datetime={recepient?.lastSeen?.toDate()} />
-              ) : "Unavailable"} </p>
+                <TimeAgo datetime={recepient?.lastSeen?.toDate()} />
+              ) : (
+                "Unavailable"
+              )}{" "}
+            </p>
           ) : (
             <p>Loading last active...</p>
           )}
@@ -166,7 +172,7 @@ const MessageContainer = styled.div`
 `;
 
 const EndOfMessage = styled.div`
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 `;
 
 const InputContainer = styled.form`
