@@ -16,7 +16,7 @@ function Login() {
       </Head>
       <LoginContainer>
         <ImageContainer>
-        <Image src={"https://cdn.freebiesupply.com/images/large/2x/whatsapp-logo-transparent.png"} layout="fill" />
+        <Image src={"https://cdn.freebiesupply.com/images/large/2x/whatsapp-logo-transparent.png"} layout="fill" alt="" />
         </ImageContainer>
         <Button onClick={signIn} variant="outlined">Sign in with Google</Button>
       </LoginContainer>
