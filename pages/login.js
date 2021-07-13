@@ -15,7 +15,9 @@ function Login() {
         <title>Login</title>
       </Head>
       <LoginContainer>
-        <Logo src="https://image.flaticon.com/icons/png/512/124/124034.png" />
+        <ImageContainer>
+        <Image src={"https://cdn.freebiesupply.com/images/large/2x/whatsapp-logo-transparent.png"} layout="fill" />
+        </ImageContainer>
         <Button onClick={signIn} variant="outlined">Sign in with Google</Button>
       </LoginContainer>
     </Container>
@@ -41,8 +43,9 @@ const LoginContainer = styled.div`
   box-shadow: 0px 4px 14px -3px rgba(0,0,0,0.7);
 `;
 
-const Logo = styled(Image)`
-  height: 200px;
-  width: 200px;
-  margin-bottom: 50px;
+const ImageContainer = styled.div`
+  position: relative;
+  height:200px;
+  width:200px;
+  margin-bottom: 25px;
 `;
